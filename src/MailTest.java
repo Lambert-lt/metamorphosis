@@ -14,7 +14,7 @@ public class MailTest {
 
     public static void main(String[] args) throws MessagingException {
         // 配置发送邮件的环境属性
-        final Properties props = new Properties();
+        final Properties props = new Properties() ;
         /*
          * 可用的属性： mail.store.protocol / mail.transport.protocol / mail.host /
          * mail.user / mail.from
