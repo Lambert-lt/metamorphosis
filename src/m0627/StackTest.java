@@ -1,4 +1,4 @@
-package m627;
+package m0627;
 
 public class StackTest {  
     public static void main(String[] args) {  
