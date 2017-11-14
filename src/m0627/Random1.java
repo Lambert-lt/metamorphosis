@@ -6,7 +6,7 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Random;
 
-public class random {
+public class Random1 {
 
 	private static  Map<String,String> getFixLenthString(Map<String,String> map) {  
 	      
