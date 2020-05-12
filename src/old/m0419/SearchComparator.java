@@ -1,4 +1,4 @@
-package m0419;
+package old.m0419;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -14,16 +14,16 @@ import m0417.UserInfo;
 
 
 
-public class SearchComparator implements Comparator<Search> {
+public class SearchComparator implements Comparator<m0419.Search> {
 
 
 
-	/**¼òµ¥£¬ÓÃÀ´¶Ô´¿ÖÐÎÄ¡¢´¿Ó¢ÎÄ»òÕßÖÐÓ¢ÎÄ»ìºÏ½øÐÐÅÅÐò**/
-	public int compare(Search s1, Search s2) {
+	/**ï¿½òµ¥£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô´ï¿½ï¿½ï¿½ï¿½Ä¡ï¿½ï¿½ï¿½Ó¢ï¿½Ä»ï¿½ï¿½ï¿½ï¿½ï¿½Ó¢ï¿½Ä»ï¿½Ï½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½**/
+	public int compare(m0419.Search s1, m0419.Search s2) {
 		return s1.getName().compareToIgnoreCase(s2.getName());
 	} 
 
-	public List<Search> sortListByType(List<Search> list)
+	public List<m0419.Search> sortListByType(List<m0419.Search> list)
 	{
 
 
@@ -39,10 +39,10 @@ public class SearchComparator implements Comparator<Search> {
 			{
 
 
-				Search search=(Search)list.get(i);
+				m0419.Search search=(m0419.Search)list.get(i);
 				String name=search.getName();
 				/**
-				 *  Èç¹ûÓ¢ÎÄÓÅÏÈ£¬ÔòÕâÀïµÄIFÌõ¼þÎª£º
+				 *  ï¿½ï¿½ï¿½Ó¢ï¿½ï¿½ï¿½ï¿½ï¿½È£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½IFï¿½ï¿½ï¿½ï¿½Îªï¿½ï¿½
 				 *  isContainsHanyu(name.substring(0,1))&&isContainsHanyu(name)
 				 **/
 				if(isContainsHanyu(name))
@@ -82,7 +82,7 @@ public class SearchComparator implements Comparator<Search> {
 		return list;
 	}
 
-	//°ÑÒ»¸ö¼¯ºÏÖÐµÄÔªËØ¸´ÖÆµ½ÁíÒ»¸ö¼¯ºÏÖÐ
+	//ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ðµï¿½Ôªï¿½Ø¸ï¿½ï¿½Æµï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	public List copy(List sourceList,List copyList)
 	{
 		if(copyList!=null)
@@ -96,7 +96,7 @@ public class SearchComparator implements Comparator<Search> {
 	}
 
 
-	//¼ì²é×Ö·û´®ÊÇ·ñ°üº¬ÖÐÎÄ
+	//ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	public boolean isContainsHanyu(String str)
 	{
 		boolean flag=false;
@@ -117,45 +117,45 @@ public class SearchComparator implements Comparator<Search> {
 
 	public static void main(String[] args)
 	{
-//		String s = "test²âÊÔ";
+//		String s = "testï¿½ï¿½ï¿½ï¿½";
 //
 		SearchComparator comparator=new SearchComparator();
 //		comparator.isContainsHanyu(s);
 		
-		List<Search> li = new ArrayList<Search>();
+		List<m0419.Search> li = new ArrayList<m0419.Search>();
 		
-		Search search = new Search();
+		m0419.Search search = new m0419.Search();
 		search.setSearchName("a");
 		
-		Search search1 = new Search();
+		m0419.Search search1 = new m0419.Search();
 		search1.setSearchName("b");
 		
-		Search search2 = new Search();
-		search2.setSearchName("îÑ");
+		m0419.Search search2 = new m0419.Search();
+		search2.setSearchName("ï¿½ï¿½");
 		
-		Search search3 = new Search();
-		search3.setSearchName("°±»ùËá");
+		m0419.Search search3 = new m0419.Search();
+		search3.setSearchName("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
 		
-		Search search4 = new Search();
-		search4.setSearchName("ÍøÒ×");
+		m0419.Search search4 = new m0419.Search();
+		search4.setSearchName("ï¿½ï¿½ï¿½ï¿½");
 		
-		Search search5 = new Search();
+		m0419.Search search5 = new m0419.Search();
 		search5.setSearchName("a1");
 		
-		Search search6 = new Search();
+		m0419.Search search6 = new m0419.Search();
 		search6.setSearchName("a10");
 		
-		Search search7 = new Search();
+		m0419.Search search7 = new m0419.Search();
 		search7.setSearchName("a2");
 		
-		Search search8 = new Search();
-		search8.setSearchName("²âÊÔ1");
+		m0419.Search search8 = new m0419.Search();
+		search8.setSearchName("ï¿½ï¿½ï¿½ï¿½1");
 		
-		Search search9 = new Search();
-		search9.setSearchName("²âÊÔ1a");
+		m0419.Search search9 = new m0419.Search();
+		search9.setSearchName("ï¿½ï¿½ï¿½ï¿½1a");
 		
-		Search search10 = new Search();
-		search10.setSearchName("²âÊÔ1b");
+		m0419.Search search10 = new m0419.Search();
+		search10.setSearchName("ï¿½ï¿½ï¿½ï¿½1b");
 		
 		li.add(search);
 		li.add(search1);
@@ -169,12 +169,12 @@ public class SearchComparator implements Comparator<Search> {
 		li.add(search9);
 		li.add(search10);
 		
-		for (Search se : li) {  
+		for (m0419.Search se : li) {
 			String tempName = SortUtil.changeIntToSpecifyLength(se.getSearchName());  
 			se.setName(tempName);
 		} 
 		
-		List<Search> li1 = comparator.sortListByType(li);
+		List<m0419.Search> li1 = comparator.sortListByType(li);
 		for (int i = 0; i < li1.size(); i++) {
 			System.out.println(li1.get(i).getSearchName());
 		}

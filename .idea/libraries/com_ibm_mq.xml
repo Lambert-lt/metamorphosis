@@ -1,0 +1,22 @@
+<component name="libraryTable">
+  <library name="com.ibm.mq">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/com.ibm.mq.jar!/" />
+      <root url="jar://$PROJECT_DIR$/commons-codec-1.9.jar!/" />
+      <root url="jar://$PROJECT_DIR$/commons-httpclient-3.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/commons-lang-2.5.jar!/" />
+      <root url="jar://$PROJECT_DIR$/commons-logging-1.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/icu4j-58.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/mail.jar!/" />
+      <root url="jar://$PROJECT_DIR$/pinyin4j-2.5.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/jpush-client-3.4.4.jar!/" />
+      <root url="jar://$PROJECT_DIR$/fastjson-1.2.68.jar!/" />
+      <root url="jar://$PROJECT_DIR$/gson-2.8.6.jar!/" />
+      <root url="jar://$PROJECT_DIR$/jiguang-common-1.1.8.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.ideaLibSources/jpush-client-3.4.4-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

@@ -1,9 +1,4 @@
-package m0419;
-
-import java.util.Arrays;
-import java.util.Comparator;
-
-
+package old.m0419;
 
 import net.sourceforge.pinyin4j.PinyinHelper;
 import net.sourceforge.pinyin4j.format.HanyuPinyinCaseType;
@@ -12,98 +7,85 @@ import net.sourceforge.pinyin4j.format.HanyuPinyinToneType;
 import net.sourceforge.pinyin4j.format.HanyuPinyinVCharType;
 import net.sourceforge.pinyin4j.format.exception.BadHanyuPinyinOutputFormatCombination;
 
-public class PinyinComparator implements Comparator<Search>{
+import java.util.Comparator;
 
-	public int compare(Search s1,Search s2) {
+public class PinyinComparator implements Comparator<m0419.Search> {
 
-
-		String o1=s1.getSearchName();
-
-
-		String o2=s2.getSearchName();
+    public int compare(m0419.Search s1, m0419.Search s2) {
 
 
-		for (int i = 0; i < o1.length() && i < o2.length(); i++) {
+        String o1 = s1.getSearchName();
 
 
-
-			int codePoint1 = o1.charAt(i);
-
-
-			int codePoint2 = o2.charAt(i);
+        String o2 = s2.getSearchName();
 
 
-
-			if (Character.isSupplementaryCodePoint(codePoint1)|| Character.isSupplementaryCodePoint(codePoint2)) {
-				i++;
-			}
+        for (int i = 0; i < o1.length() && i < o2.length(); i++) {
 
 
-
-			if (codePoint1 != codePoint2) 
-			{
-				if (Character.isSupplementaryCodePoint(codePoint1)|| Character.isSupplementaryCodePoint(codePoint2))
-
-				{
-					return codePoint1 - codePoint2;
-				}
-
-				String pinyin1 = pinyin((char) codePoint1);
-				String pinyin2 = pinyin((char) codePoint2);
-
-				if (pinyin1 != null && pinyin2 != null) 
-				{ 
-					// Á½¸ö×Ö·û¶¼ÊÇºº×Ö
-					if (!pinyin1.equals(pinyin2)) 
-					{
-						return pinyin1.compareTo(pinyin2);
-					}
-				} 
-				else 
-				{
-					return codePoint1 - codePoint2;
-				}
-			}
-		}
-
-		return  o1.length() -  o2.length();
+            int codePoint1 = o1.charAt(i);
 
 
-	}
+            int codePoint2 = o2.charAt(i);
 
-	/**¶ÔÖÐÓ¢ÎÄÅÅÐò**/
-	private String pinyin(char c) {
 
-		if(String.valueOf(c)==null||String.valueOf(c).length()==0)
-		{
-			return "";
-		}
+            if (Character.isSupplementaryCodePoint(codePoint1) || Character.isSupplementaryCodePoint(codePoint2)) {
+                i++;
+            }
 
-		HanyuPinyinOutputFormat format = new  HanyuPinyinOutputFormat(); 
-		format.setCaseType(HanyuPinyinCaseType.LOWERCASE);    
-		format.setToneType(HanyuPinyinToneType.WITHOUT_TONE);     
-		format.setVCharType(HanyuPinyinVCharType.WITH_V);
-		String output="";
-		try
-		{            
-			if (java.lang.Character.toString(c).matches("[\\u4E00-\\u9FA5]")) 
-			{                   
-				String[] temp = PinyinHelper.toHanyuPinyinStringArray(c,format); 
-				if(temp!=null&&temp.length>0)
-				{
-					output += temp[0];
-				}
-			} 
-			else
-			{ 
-				output += java.lang.Character.toString(c);
-			}
-		}catch(BadHanyuPinyinOutputFormatCombination e)
-		{
-			e.printStackTrace();
-		}
 
-		return output;     
-	}    
+            if (codePoint1 != codePoint2) {
+                if (Character.isSupplementaryCodePoint(codePoint1) || Character.isSupplementaryCodePoint(codePoint2)) {
+                    return codePoint1 - codePoint2;
+                }
+
+                String pinyin1 = pinyin((char) codePoint1);
+                String pinyin2 = pinyin((char) codePoint2);
+
+                if (pinyin1 != null && pinyin2 != null) {
+                    // ï¿½ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½ï¿½ï¿½Çºï¿½ï¿½ï¿½
+                    if (!pinyin1.equals(pinyin2)) {
+                        return pinyin1.compareTo(pinyin2);
+                    }
+                } else {
+                    return codePoint1 - codePoint2;
+                }
+            }
+        }
+
+        return o1.length() - o2.length();
+
+
+    }
+
+    /**
+     * ï¿½ï¿½ï¿½ï¿½Ó¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+     **/
+    private String pinyin(char c) {
+
+        if (String.valueOf(c) == null || String.valueOf(c).length() == 0) {
+            return "";
+        }
+
+        HanyuPinyinOutputFormat format = new HanyuPinyinOutputFormat();
+        format.setCaseType(HanyuPinyinCaseType.LOWERCASE);
+        format.setToneType(HanyuPinyinToneType.WITHOUT_TONE);
+        format.setVCharType(HanyuPinyinVCharType.WITH_V);
+        String output = "";
+        try {
+            if (java.lang.Character.toString(c).matches("[\\u4E00-\\u9FA5]")) {
+                String[] temp = PinyinHelper.toHanyuPinyinStringArray(c, format);
+                if (temp != null && temp.length > 0) {
+                    output += temp[0];
+                }
+            } else {
+                output += java.lang.Character.toString(c);
+            }
+        } catch (BadHanyuPinyinOutputFormatCombination e) {
+            e.printStackTrace();
+        }
+
+        return output;
+    }
 
 }

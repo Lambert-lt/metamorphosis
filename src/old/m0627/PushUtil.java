@@ -1,7 +1,4 @@
-package m0627;
-
-import java.util.HashMap;
-import java.util.Map;
+package old.m0627;
 
 import cn.jpush.api.JPushClient;
 import cn.jpush.api.push.PushResult;
@@ -10,6 +7,9 @@ import cn.jpush.api.push.model.Platform;
 import cn.jpush.api.push.model.PushPayload;
 import cn.jpush.api.push.model.audience.Audience;
 import cn.jpush.api.push.model.notification.Notification;
+
+import java.util.HashMap;
+import java.util.Map;
 
 
 /**
@@ -21,7 +21,7 @@ public class PushUtil {
 	public static final String APPKEY = "2f3fce39bd8a146b74b0abac";
 	public static final String APPSECRET = "2bd7fb44d2aa5f13a04fd6cf";
 
-	// JPushCLient对象，负责进行消息推�??
+	// JPushCLient对象，负责进行消息推�??
 	private static JPushClient pushClient = new JPushClient(APPSECRET, APPKEY);
 
 	public PushUtil() {
@@ -30,9 +30,9 @@ public class PushUtil {
 
 	private static PushPayload.Builder getPayloadBuilder(Platform platform, Audience audience) {
 		return PushPayload.newBuilder()
-				// 限制推�?�平�??
+				// 限制推�?�平�??
 				.setPlatform(platform)
-				// 限制推�?�对象为�??有设�??
+				// 限制推�?�对象为�??有设�??
 				.setAudience(audience);
 	}
 
@@ -41,12 +41,12 @@ public class PushUtil {
 		return sendPush4All(title, content, new HashMap<String, String>());
 	}
 
-	// 推�?�广播消�??
+	// 推�?�广播消�??
 	public static boolean sendPush4All(String title, String content, Map<String, String> extras) {
 		try {
-			// 创建发�?�给�??有人的PushPayload对象
+			// 创建发�?�给�??有人的PushPayload对象
 			PushPayload.Builder payloadBuilder;
-			// 设置推�?�消息参�??
+			// 设置推�?�消息参�??
 			try {
 				payloadBuilder = getPayloadBuilder(Platform.ios(), Audience.all());
 				Options options = Options.sendno();
@@ -54,13 +54,13 @@ public class PushUtil {
 //				if(SystemConfig.getSysProperty("sys.jpush.status").equals("Y")){
 //					flag = true;
 //				}
-				options.setApnsProduction(flag);// true代表ios是生产环节，false是开发环境，具体根据ios配置的证书设�??
+				options.setApnsProduction(flag);// true代表ios是生产环节，false是开发环境，具体根据ios配置的证书设�??
 				payloadBuilder.setOptions(options);
 				PushPayload payload = payloadBuilder.setNotification(Notification.ios(content, extras)).build();
 				PushResult result = pushClient.sendPush(payload);
 				System.out.println(result.getOriginalContent());
 			} catch (Exception e) {
-				System.out.println("ios推�?�消息失�??!");
+				System.out.println("ios推�?�消息失�??!");
 			}
 
 			payloadBuilder = getPayloadBuilder(Platform.android(), Audience.all());
@@ -69,7 +69,7 @@ public class PushUtil {
 			System.out.println(result.getOriginalContent());
 			return true;
 		} catch (Exception e) {
-			System.out.println("android推�?�消息失�??!");
+			System.out.println("android推�?�消息失�??!");
 		}
 		return false;
 	}
@@ -78,9 +78,9 @@ public class PushUtil {
 		// 推�?�所有�?��?��?��?�有链接
 		/*
 		 * PushUtil pu = new PushUtil(); Map<String,String> extras = new
-		 * HashMap<String,String>(); extras.put("type","1");//推�?�类�?? 0=账单 1=公告
+		 * HashMap<String,String>(); extras.put("type","1");//推�?�类�?? 0=账单 1=公告
 		 * extras.put("url","");//url链接 boolean send =
-		 * pu.sendPush4All("秒账","买房可享中央空调主机0元购套餐�??3�??3送，详情戳这儿！",extras);
+		 * pu.sendPush4All("秒账","买房可享中央空调主机0元购套餐�??3�??3送，详情戳这儿！",extras);
 		 * System.out.println(send);
 		 */
 
@@ -94,10 +94,10 @@ public class PushUtil {
 //		  String[] arr = new String[1]; arr[0] = "497"; PushUtil pu =
 //		  new PushUtil(); Map<String,String> extras = new
 //		  HashMap<String,String>(); extras.put("type","4");
-//		  //推�?�类�?? 0=账单 1=公告
+//		  //推�?�类�?? 0=账单 1=公告
 //		  extras.put("url","");//url链接 
 //		  boolean send =
-//		  pu.sendPushByAlias("秒账","买房可享中央空调主机0元购套餐�??3�??3送，详情戳这儿！",arr,extras);
+//		  pu.sendPushByAlias("秒账","买房可享中央空调主机0元购套餐�??3�??3送，详情戳这儿！",arr,extras);
 //		  System.out.println(send);
 		 
 
@@ -127,19 +127,19 @@ public class PushUtil {
 			try {
 				payloadBuilder = getPayloadBuilder(Platform.ios(), Audience.alias(alias));
 //				payloadBuilder = getPayloadBuilder(Platform.ios(),Audience.registrationId("191e35f7e07462f37b9"));
-				// 设置推�?�消息参�??
+				// 设置推�?�消息参�??
 				Options options = Options.sendno();
 				Boolean flag = Boolean.FALSE;
 //				if(SystemConfig.getSysProperty("sys.jpush.status").equals("Y")){
 //					flag = true;
 //				}
-				options.setApnsProduction(flag);// true代表ios是生产环节，false是开发环境，具体根据ios配置的证书设�??
+				options.setApnsProduction(flag);// true代表ios是生产环节，false是开发环境，具体根据ios配置的证书设�??
 				payloadBuilder.setOptions(options);
 				payload = payloadBuilder.setNotification(Notification.ios(content, extras)).build();
 				pushClient.sendPush(payload);
 				System.out.println("ios推�??"+alias[0]+"消息成功!");
 			} catch (Exception e) {
-				System.out.println("ios推�?�消息失�??!");
+				System.out.println("ios推�?�消息失�??!");
 			}
 			
 			payloadBuilder = getPayloadBuilder(Platform.android(), Audience.alias(alias));
@@ -148,7 +148,7 @@ public class PushUtil {
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
-			System.out.println("android推�?�消息失�??!");
+			System.out.println("android推�?�消息失�??!");
 		}
 		return false;
 	}
@@ -157,13 +157,13 @@ public class PushUtil {
 		return sendPushByTags(title, content, tags, new HashMap<String, String>());
 	}
 
-	// 推�?�消�??
+	// 推�?�消�??
 	public static boolean sendPushByTags(String title, String content, String[] tags, Map<String, String> extras) {
 
 		try {
 			// 创建发�?�给拥有Tag标签用户的PushPayload对象
 			PushPayload.Builder payloadBuilder = getPayloadBuilder(Platform.ios(), Audience.tag(tags));
-			// 设置推�?�消息参�??
+			// 设置推�?�消息参�??
 			PushPayload payload = payloadBuilder.setNotification(Notification.ios(content, extras)).build();
 			pushClient.sendPush(payload);
 
@@ -173,7 +173,7 @@ public class PushUtil {
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
-			System.out.println("推�?�消息失�??!");
+			System.out.println("推�?�消息失�??!");
 		}
 		return false;
 	}
