@@ -1,5 +1,7 @@
 package m202005;
 
+import org.apache.commons.lang.BooleanUtils;
+
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashSet;
@@ -58,29 +60,37 @@ public class StringMethod {
     }*/
 
 
-    public String replaceSpaces(String S, int length) {
+    public static String replaceSpaces(String s, int length) {
         // 1.查询需要增加的长度
         int addLength = 0;
         for (int i = 0; i < length; i++) {
-            if (S.charAt(i) == ' ') {
+            if (s.charAt(i) == ' ') {
                 addLength++;
             }
         }
-
+        int totalLength = length + addLength * 2  +1;
+        char[] chars = new char[totalLength];
+        int j = 0;
         // 2.替换字符串
-
-
-
-        return S;
+        for (int i = 0; i < s.length(); i++) {
+            if (s.charAt(i) == ' ') {
+                chars[j++] = '%';
+                chars[j++] = '2';
+                chars[j++] = '0';
+            } else {
+                chars[j++] = s.charAt(i);
+            }
+        }
+        return String.valueOf(chars);
     }
 
     public static void main(String[] args) {
-        String astr = "abcdefg";
-        String astr1 = "abcddefg";
-        System.out.println("astr CheckPermutation: " + CheckPermutation(astr,astr1));
-        String astr2 = "abcdefg";
-        String astr3 = "fgdebca";
-        System.out.println("astr2 CheckPermutation: " + CheckPermutation(astr2,astr3));
+
+//        boolean b = BooleanUtils.isTrue(true) && BooleanUtils.isFalse(null);
+//        System.out.println(b);
+        String astr = "abc de fg";
+        System.out.println(astr);
+        System.out.println(replaceSpaces(astr, 8));
     }
 }
 
